@@ -1,7 +1,12 @@
 import React from "react";
+import Simulator from "./simulator/page";
 
-const page = () => {
-  return <div>page</div>;
+const Page = () => {
+  return (
+    <div>
+      <Simulator />
+    </div>
+  );
 };
 
-export default page;
+export default Page;
