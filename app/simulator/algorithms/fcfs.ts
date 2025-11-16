@@ -4,26 +4,26 @@ import { ComputedProcess, GanttChartEntry, process } from "../utils/type";
 
 
 export const fcfs=({processes}:{processes:process[]})=>{
-    var gnattChart:GanttChartEntry[]=[];
-    var computedProcess:ComputedProcess[]=[];
+    var gnattChart_FCFS:GanttChartEntry[]=[];
+    var computedProcess_FCFS:ComputedProcess[]=[];
     for (let i = 0; i < processes.length; i++) {
-        gnattChart.push({
+        gnattChart_FCFS.push({
             pid: `P${processes[i].id.toString()}`,
-            start:(i===0)?0:gnattChart[i-1].end,
-            end:((i==0)?0:gnattChart[i-1].end)+processes[i].burstTime
+            start:(i===0)?0:gnattChart_FCFS[i-1].end,
+            end:((i==0)?0:gnattChart_FCFS[i-1].end)+processes[i].burstTime
         })
-        computedProcess.push({
+        computedProcess_FCFS.push({
             ...processes[i],
-            completionTime:gnattChart[i].end,
-            waitingTime:(i==0)?0:gnattChart[i-1].end,
-            turnaroundTime: gnattChart[i].end-0
+            completionTime:gnattChart_FCFS[i].end,
+            waitingTime:(i==0)?0:gnattChart_FCFS[i-1].end,
+            turnaroundTime: gnattChart_FCFS[i].end-0
         });
     }
 
 
 
 
-    return {    gnattChart,computedProcess};
+    return {gnattChart_FCFS,computedProcess_FCFS};
 
 
 
