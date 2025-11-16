@@ -1,9 +1,5 @@
 import { Process } from "@/app/simulator/utils/type";
 import { create } from "zustand";
-
-
-
-
 export const useProcess=create<Process>((set)=>({
     processes:[],
     algorithm:"",

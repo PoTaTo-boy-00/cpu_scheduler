@@ -13,7 +13,7 @@ import {
 import { fcfs } from "./algorithms/fcfs";
 import { useProcess } from "@/context/processContext";
 import { sjf } from "./algorithms/sjf";
-import { sjtr } from "./algorithms/sjtr";
+import { srtf } from "./algorithms/sjtr";
 import { priority } from "./algorithms/priority";
 import { rr } from "./algorithms/rr";
 import TimeQuantumInput from "./components/TimeQuantumInput";
@@ -35,15 +35,26 @@ const Simulator = () => {
   const handleClick = () => {
     switch (algorithm) {
       case "fcfs":
-        const { gnattChart, computedProcess } = fcfs({ processes: processes });
-        setGnatt(gnattChart);
-        setComputedProcess(computedProcess);
+        const { gnattChart_FCFS, computedProcess_FCFS } = fcfs({
+          processes: processes,
+        });
+        setGnatt(gnattChart_FCFS);
+        setComputedProcess(computedProcess_FCFS);
         break;
       case "sjf":
-        sjf({ processes: processes });
+        const { gnattChart_SJF, computedProcess_SJF } = sjf({
+          processes: processes,
+        });
+        // console.log(gnattChart_SJF, computedProcess_SJF);
+        setGnatt(gnattChart_SJF);
+        setComputedProcess(computedProcess_SJF);
         break;
       case "sjtr":
-        sjtr({ processes: processes });
+        const { gnattChart_SRTF, computedProcess_SRTF } = srtf({
+          processes: processes,
+        });
+        setGnatt(gnattChart_SRTF);
+        setComputedProcess(computedProcess_SRTF);
         break;
       case "priority":
         priority({ processes: processes });

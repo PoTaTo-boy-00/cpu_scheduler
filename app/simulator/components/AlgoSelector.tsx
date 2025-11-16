@@ -32,7 +32,9 @@ const AlgoSelector = () => {
         <SelectContent>
           <SelectItem value="fcfs">First Come First Serve (FCFS)</SelectItem>
           <SelectItem value="sjf">Shortest Job First (SJF)</SelectItem>
-          <SelectItem value="sjtr">Shortest Remaining Time (SRT)</SelectItem>
+          <SelectItem value="sjtr">
+            Shortest Remaining Time First(SRTF)
+          </SelectItem>
           <SelectItem value="priority">Priority Scheduling</SelectItem>
           <SelectItem value="rr">Round Robin (RR)</SelectItem>
         </SelectContent>

@@ -7,7 +7,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ComputedProcess } from "../utils/type";
-import { BarChart3 } from "lucide-react";
 
 const MetricsTable = ({
   computedProcess,
@@ -18,6 +17,9 @@ const MetricsTable = ({
     return null;
   }
 
+  const avdTAT =
+    computedProcess.reduce((sum, curr) => sum + curr.turnaroundTime, 0) /
+    computedProcess.length;
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
@@ -47,6 +49,9 @@ const MetricsTable = ({
             ))}
           </TableBody>
         </Table>
+        <div className="p-4 bg-gray-50 text-right font-medium">
+          Average Turnaround Time: {avdTAT.toFixed(2)}ms
+        </div>
       </div>
     </div>
   );
