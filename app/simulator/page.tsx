@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProcessForm from "./components/ProcessForm";
 import ProcessTable from "./components/ProcessTable";
 import AlgoSelector from "./components/AlgoSelector";
@@ -23,7 +23,7 @@ import GnattChart from "./components/GnattChart";
 import MetricsTable from "./components/MetricsTable";
 
 const Simulator = () => {
-  const { processes, algorithm } = useProcess();
+  const { processes, algorithm, timeQuantum } = useProcess();
   // const gnatt: GanttChartEntry[] = [
   //   { pid: "P1", start: 0, end: 3 },
   //   { pid: "P2", start: 3, end: 7 },
@@ -31,6 +31,7 @@ const Simulator = () => {
   // ];
   const [gnatt, setGnatt] = useState<GanttChartEntry[]>([]);
   const [computedProcess, setComputedProcess] = useState<ComputedProcess[]>([]);
+  const [isPriority, setPriority] = useState<boolean>(false);
 
   const handleClick = () => {
     switch (algorithm) {
@@ -57,15 +58,31 @@ const Simulator = () => {
         setComputedProcess(computedProcess_SRTF);
         break;
       case "priority":
-        priority({ processes: processes });
+        const { gnattChart_PRIORITY, computedProcess_PRIORITY } = priority({
+          processes: processes,
+        });
+        setGnatt(gnattChart_PRIORITY);
+        setComputedProcess(computedProcess_PRIORITY);
         break;
       case "rr":
-        rr({ processes: processes });
+        const { gnattChart_RR, computedProcess_RR } = rr({
+          processes: processes,
+          tq: timeQuantum || 1,
+        });
+        setGnatt(gnattChart_RR);
+        setComputedProcess(computedProcess_RR);
         break;
       default:
         break;
     }
   };
+  useEffect(() => {
+    if (algorithm === "priority") {
+      setPriority(true);
+    } else {
+      setPriority(false);
+    }
+  }, [algorithm]);
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
       <div className="text-center">
@@ -91,12 +108,12 @@ const Simulator = () => {
       </div>
       {algorithm === "rr" && <TimeQuantumInput />}
 
-      <ProcessTable />
+      <ProcessTable priority={isPriority} />
 
       <span>
         <Button onClick={handleClick}>Simulate</Button>
       </span>
-      <MetricsTable computedProcess={computedProcess} />
+      <MetricsTable computedProcess={computedProcess} prority={isPriority} />
       <GanttChart gnatt={gnatt} />
     </div>
   );

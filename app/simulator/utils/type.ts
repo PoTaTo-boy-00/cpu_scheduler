@@ -1,6 +1,8 @@
 export interface process{
     id: number;
     burstTime: number;
+    arrivalTime?: number;
+    priority?:number;
 }
 
 export type algorithmType=""|"fcfs"|"sjf"|"rr"|"priority"|"sjtr";
@@ -12,6 +14,7 @@ export interface Process{
     setTimeQuantum?:(timeQuantum:number)=>void;
     addProcess:(process:process)=>void;
     deleteProcess:(id:number)=>void;
+    updateProcess?:(process:process)=>void;
     setAlgorithm?:(algo:algorithmType)=>void
 }
 

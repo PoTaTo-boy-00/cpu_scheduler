@@ -10,8 +10,10 @@ import { ComputedProcess } from "../utils/type";
 
 const MetricsTable = ({
   computedProcess,
+  prority,
 }: {
   computedProcess: ComputedProcess[];
+  prority: boolean;
 }) => {
   if (computedProcess.length === 0) {
     return null;

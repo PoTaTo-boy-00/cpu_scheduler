@@ -14,6 +14,17 @@ export const useProcess=create<Process>((set)=>({
             processes:state.processes.filter((p)=>p.id!==id)
         }))
     },
+    updateProcess:(id,priority)=>{
+        set((state)=>({
+            processes:state.processes.map((p)=>p.id===id?
+        {
+            ...p,
+            priority:priority
+        }:p
+        )
+
+        }))
+    },
     setAlgorithm:(algo)=>{
         set(()=>(
             {algorithm:algo}
