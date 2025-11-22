@@ -15,11 +15,12 @@ export const useProcess=create<Process>((set)=>({
         }))
     },
     updateProcess:(id,priority)=>{
+         const safe = Math.max(1, priority);
         set((state)=>({
             processes:state.processes.map((p)=>p.id===id?
         {
             ...p,
-            priority:priority
+            priority:safe
         }:p
         )
 

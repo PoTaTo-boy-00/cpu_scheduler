@@ -14,7 +14,7 @@ export interface Process{
     setTimeQuantum?:(timeQuantum:number)=>void;
     addProcess:(process:process)=>void;
     deleteProcess:(id:number)=>void;
-    updateProcess?:(process:process)=>void;
+    updateProcess?:(id:number,priority:number)=>void;
     setAlgorithm?:(algo:algorithmType)=>void
 }
 

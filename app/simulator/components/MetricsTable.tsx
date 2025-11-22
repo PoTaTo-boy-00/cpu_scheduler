@@ -37,6 +37,9 @@ const MetricsTable = ({
               <TableHead className="font-semibold">Waiting Time</TableHead>
               <TableHead className="font-semibold">Turnaround Time</TableHead>
               <TableHead className="font-semibold">Completion Time</TableHead>
+              {prority && (
+                <TableHead className="font-semibold">Priority</TableHead>
+              )}
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -47,6 +50,7 @@ const MetricsTable = ({
                 <TableCell>{process.waitingTime}ms</TableCell>
                 <TableCell>{process.turnaroundTime}ms</TableCell>
                 <TableCell>{process.completionTime}ms</TableCell>
+                {prority && <TableCell>{process.priority}</TableCell>}
               </TableRow>
             ))}
           </TableBody>
