@@ -5,8 +5,8 @@ import { ComputedProcess, GanttChartEntry, process } from "../utils/type";
 
 export const sjf=({processes}:{processes:process[]})=>{
      const sortedProcesses=[...processes].sort((a,b)=>a.burstTime-b.burstTime)
-    var gnattChart_SJF:GanttChartEntry[]=[];
-        var computedProcess_SJF:ComputedProcess[]=[];
+    const gnattChart_SJF:GanttChartEntry[]=[];
+        const computedProcess_SJF:ComputedProcess[]=[];
         for (let i = 0; i < sortedProcesses.length; i++) {
             gnattChart_SJF.push({
                 pid: `P${sortedProcesses[i].id.toString()}`,
