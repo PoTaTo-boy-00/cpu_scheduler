@@ -4,8 +4,8 @@ import { ComputedProcess, GanttChartEntry, process } from "../utils/type";
 
 
 export const fcfs=({processes}:{processes:process[]})=>{
-    var gnattChart_FCFS:GanttChartEntry[]=[];
-    var computedProcess_FCFS:ComputedProcess[]=[];
+    const gnattChart_FCFS:GanttChartEntry[]=[];
+    const computedProcess_FCFS:ComputedProcess[]=[];
     for (let i = 0; i < processes.length; i++) {
         gnattChart_FCFS.push({
             pid: `P${processes[i].id.toString()}`,

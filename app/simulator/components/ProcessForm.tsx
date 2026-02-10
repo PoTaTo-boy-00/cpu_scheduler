@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useProcess } from "@/context/processContext";
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Plus, Cpu } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const ProcessForm = () => {
   const [processObject, setProcessObject] = useState({

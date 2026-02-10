@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProcessForm from "./components/ProcessForm";
 import ProcessTable from "./components/ProcessTable";
 import AlgoSelector from "./components/AlgoSelector";
@@ -19,7 +19,6 @@ import { rr } from "./algorithms/rr";
 import TimeQuantumInput from "./components/TimeQuantumInput";
 import GanttChart from "./components/GnattChart";
 import { ComputedProcess, GanttChartEntry } from "./utils/type";
-import GnattChart from "./components/GnattChart";
 import MetricsTable from "./components/MetricsTable";
 
 const Simulator = () => {
@@ -31,7 +30,7 @@ const Simulator = () => {
   // ];
   const [gnatt, setGnatt] = useState<GanttChartEntry[]>([]);
   const [computedProcess, setComputedProcess] = useState<ComputedProcess[]>([]);
-  const [isPriority, setPriority] = useState<boolean>(false);
+  const isPriority = algorithm === "priority";
 
   const handleClick = () => {
     switch (algorithm) {
@@ -76,13 +75,6 @@ const Simulator = () => {
         break;
     }
   };
-  useEffect(() => {
-    if (algorithm === "priority") {
-      setPriority(true);
-    } else {
-      setPriority(false);
-    }
-  }, [algorithm]);
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-6">
       <div className="text-center">

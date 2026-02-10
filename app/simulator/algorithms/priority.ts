@@ -4,9 +4,9 @@ import { ComputedProcess, GanttChartEntry, process } from "../utils/type";
 
 
 export const priority=({processes}:{processes:process[]})=>{
-    let sortedProcesses=[...processes].sort((a,b)=>(a.priority!-b.priority!))
-    let gnattChart_PRIORITY:GanttChartEntry[]=[];
-    let computedProcess_PRIORITY:ComputedProcess[]=[];
+    const sortedProcesses=[...processes].sort((a,b)=>(a.priority!-b.priority!))
+    const gnattChart_PRIORITY:GanttChartEntry[]=[];
+    const computedProcess_PRIORITY:ComputedProcess[]=[];
     for (let i = 0; i < sortedProcesses.length; i++) {
         gnattChart_PRIORITY.push({
             pid: `P${sortedProcesses[i].id.toString()}`,
